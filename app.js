@@ -9,9 +9,11 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 
-// mongoose.connect(process.env.MLAB_URI, function (err) {
-// 	if(err) console.log(err);
-// });
+require('./config/socket')(io);
+
+mongoose.connect(process.env.MLAB_URI || "mongodb://savan:123robot@ds149742.mlab.com:49742/pennapps18", function (err) {
+	if(err) console.log(err);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
