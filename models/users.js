@@ -1,17 +1,18 @@
 var express = require('express');
+var mongoose = reuqire('mongoose');
 var app = express();
 
 var schema = mongoose.schema;
 
-var userInfoSchema = new Schema( {
+var userInfoSchema = new Schema({
 	userName: {type: String, required: true},
-	location: {type: String, required: true}
+	coordinates: {
+		long : { type: Number, required: true },
+		lat : { type : Number, required: true }
+	},
+	currentPriority : {type: Number, required: true}
 });
 
-var user = mongoose.model("User", userInfoSchema);
+module.exports = mongoose.model("User", userInfoSchema);
 
-var newUser = new User ({
-	userName: req.body.userName,
-	location: req.body.location
-});
 
