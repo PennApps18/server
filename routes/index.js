@@ -30,10 +30,10 @@ router.get('/users', function (req, res, next){
 		if (err) {
 			res.type('html').status(500);
 			res.send("Error" + err);
+		} else {
+			console.log(users);
+			res.send(JSON.stringify(users));
 		}
-		else {
-			res.send(JSON.stringify(User);
-	}
 	});
 });
 

@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var User = require('./models/user')
 var mongoose = require('mongoose');
 var indexRouter = require('./routes/index');
 var app = express();
@@ -13,6 +14,14 @@ require('./config/socket')(io);
 
 mongoose.connect(process.env.MLAB_URI || "mongodb://savan:123robot@ds149742.mlab.com:49742/pennapps18", function (err) {
 	if(err) console.log(err);
+});
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', (callback) => {
+	console.log('connection succ');
+	var newUser = new User();
+	newUser.username = "adersh";
+	newUser.save();
 });
 
 // view engine setup
@@ -43,6 +52,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-server.listen(process.env.PORT || 3000);
+server.listen(process.env.PORT || 4000);
 
 module.exports = app;
