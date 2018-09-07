@@ -1,11 +1,11 @@
 var express = require('express');
-var mongoose = reuqire('mongoose');
+var mongoose = require('mongoose');
 var app = express();
 
-var schema = mongoose.schema;
+var Schema = mongoose.Schema;
 
 var userInfoSchema = new Schema({
-	userName: {type: String, required: true},
+	username: {type: String, required: true},
 	coordinates: {
 		long : { type: Number, required: true },
 		lat : { type : Number, required: true }
