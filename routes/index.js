@@ -25,4 +25,17 @@ router.post('/updateLocation', function(req, res, next){
 	});
 });
 
+router.get('/users', function (req, res, next){
+	User.find({}, (err, users) => {
+		if (err) {
+			res.type('html').status(500);
+			res.send("Error" + err);
+		}
+		else {
+			res.send(JSON.stringify(User);
+	}
+	});
+});
+
 module.exports = router;
+
