@@ -35,7 +35,7 @@ module.exports = function(io){
 	 			res.send("Error" + err);
 	 		} else {
 	 			console.log(users);
-	 			res.send(JSON.stringify(users));
+	 			res.end();
 	 		}
 	 	});
 	 });
@@ -60,7 +60,7 @@ module.exports = function(io){
 	 			} else if (incident.description.other){
 	 				numOther += 1;
 	 			}
-		 		
+
 	 		});
 	 		res.send(JSON.stringify({incidents: returnStatement, report: {food: numFood, injury: numInjury, other: numOther}}));
 	 	});
