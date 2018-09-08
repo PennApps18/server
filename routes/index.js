@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
  			user.save();
 
  			res.writeHead(200, {"Content-Type": "application/json"});
- 			res.end(JSON.stringiy(user));
+ 			res.end(JSON.stringify(user));
  		} else {
  			return res.status(400).end('User does not exist')
  		}
