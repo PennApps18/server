@@ -42,9 +42,9 @@ module.exports = function(io){
 
 	 router.post('/range', function(req, res, next){
 	 	var returnStatement  = [];
-	 	var numFood;
- 		var numInjury;
- 		var numOther;
+	 	var numFood=0;
+ 		var numInjury=0;
+ 		var numOther=0;
 	 	Incident.find({}, function(err, incidents){
 	 		incidents.forEach((incident) => {
 	 			if(!incident.resolved){
