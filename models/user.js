@@ -10,7 +10,7 @@ var userInfoSchema = new Schema({
 		long : { type: Number, required: false },
 		lat : { type : Number, required: false }
 	},
-	subscribers : [{type: ObjectId}]
+	subscribers : [{type: mongoose.Schema.Types.ObjectId, ref: 'User'}]
 });
 
 module.exports = mongoose.model("User", userInfoSchema);

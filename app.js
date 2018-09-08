@@ -5,12 +5,11 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var User = require('./models/user')
 var mongoose = require('mongoose');
-var indexRouter = require('./routes/index');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
-
 require('./config/socket')(io);
+var indexRouter = require('./routes/index')(io);
 
 mongoose.connect(process.env.MLAB_URI || "mongodb://savan:123robot@ds149742.mlab.com:49742/pennapps18", function (err) {
 	if(err) console.log(err);
