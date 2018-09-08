@@ -2,6 +2,7 @@ var express = require('express');
 var User = require('../models/user');
 var Incident = require('../models/incident');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
 module.exports = function(io){
 
@@ -39,6 +40,7 @@ module.exports = function(io){
 		});
 	});
 
+<<<<<<< HEAD
 	router.post('/range', function(req, res, next){
 		var returnStatement  = [];
 		Incident.forEach((incident) => {
@@ -49,6 +51,17 @@ module.exports = function(io){
 	});
 
 	return router;
+=======
+router.post('/storedUsers', function(req, res, next){
+	var dbUser = new Incident();
+		dbUser.user = req.body.user;
+		dbUser.description = req.body.description;
+		dbUser.coordinates = req.body.coordinates;
+
+		dbUser.save();
+	res.status(200);
+})
+>>>>>>> 35d9cfd679f3ecb63ee1b5d0817e74039fc13bfe
 
 }
 
