@@ -2,6 +2,7 @@ var express = require('express');
 var User = require('../models/user');
 var Incident = require('../models/incident');
 var router = express.Router();
+var bodyParser = require('body-parser');
 
 
 /* GET home page. */
@@ -47,7 +48,14 @@ router.post('/range', function(req, res, next){
 	res.send(JSON.stringify(incident);
 });
 
+router.post('/storedUsers', function(req, res, next){
+	var dbUser = new Incident();
+		dbUser.user = req.body.user;
+		dbUser.description = req.body.description;
+		dbUser.coordinates = req.body.coordinates;
 
+		dbUser.save();
+})
 
 module.exports = router;
 

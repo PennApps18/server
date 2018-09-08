@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var bodyParser = require('body-parser');
 
 require('./config/socket')(io);
 
