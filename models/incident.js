@@ -16,6 +16,8 @@ var incidentSchema = new Schema({
 		long : Number,
 		lat : Number
 	},
+	time : Date,
+	resolved: Boolean,
 	currentPriority : { type: Number, required: false },
 	image : { type: Buffer, required: false }
 });

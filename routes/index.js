@@ -42,11 +42,17 @@ module.exports = function(io){
 
 	router.post('/range', function(req, res, next){
 		var returnStatement  = [];
-		Incident.forEach((incident) => {
-			if ((incident.coordinates.lat - user.coordinates.lat >= 0.5) && (incident.coordinates.long - user.coordinates.long >= 0.5));
-			returnStatment.push(incident);
+		Incident.find({}, function(err, incidents){
+			incidents.forEach((incident) => {
+				if(!incident.resolved){
+					if (incident.coordinates.lat - user.coordinates.lat >= 0.5 && incident.coordinates.long - user.coordinates.long >= 0.5){
+						returnStatement.push(incident);
+					}
+				}
+			});
+			res.send(JSON.stringify(returnStatement));
 		});
-		res.send(JSON.stringify(incident));
+		
 	});
 
 router.post('/storedUsers', function(req, res, next){
@@ -54,18 +60,24 @@ router.post('/storedUsers', function(req, res, next){
 		dbUser.user = req.body.user;
 		dbUser.description = req.body.description;
 		dbUser.coordinates = req.body.coordinates;
+		dbUser.currentPriority = req.body.currentPriority;
+		dbUser.resolved = false;
 		dbUser.image = req.body.image;
-		console.log('in');
-
 
 		dbUser.save();
 		
 	io.emit("incidentUpdate", dbUser);
 
 	res.status(200).end("end");
+});
 
-
-
+router.post('/resolveIncident', function (req, res, next){
+	const id = req.body.incidentId;
+	Incident.findById(id, function (err, incident){
+		incident.resolved = true;
+		incident.save();
+		res.status(200).end("Resolve Succ");
+	});
 });
 
 return router;
