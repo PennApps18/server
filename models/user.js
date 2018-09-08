@@ -9,7 +9,8 @@ var userInfoSchema = new Schema({
 	coordinates: {
 		long : { type: Number, required: false },
 		lat : { type : Number, required: false }
-	}
+	},
+	subscribers : [{type: ObjectId}]
 });
 
 module.exports = mongoose.model("User", userInfoSchema);
