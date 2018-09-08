@@ -53,11 +53,11 @@ module.exports = function(io){
 	 				}
 	 			}
 		
-	 			if (incident.food === true){
+	 			if (incident.description.food === true){
 	 				numFood += 1;
-	 			} else if (incident.injury === true){
+	 			} else if (incident.description.injury === true){
 	 				numInjury += 1;
-	 			} else if (incident.other === true){
+	 			} else if (indcident.description.other === true){
 	 				numOther += 1;
 	 			}
 		 		
