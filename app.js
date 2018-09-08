@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var User = require('./models/user')
+var Incident = require('./models/incident')
 var mongoose = require('mongoose');
 var app = express();
 var server = require('http').createServer(app);
@@ -52,5 +53,58 @@ app.use(function(err, req, res, next) {
 });
 
 server.listen(process.env.PORT || 4000);
+
+/*
+var incidentSchema = new Schema({
+	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
+	description : { 
+		food: Boolean,
+		injury: Boolean,
+		other: Boolean
+	},
+	coordinates: {
+		long : Number,
+		lat : Number
+	},
+	time : Date,
+	resolved: Boolean,
+	currentPriority : { type: Number, required: false },
+	image : { type: Buffer, required: false }
+});
+*/
+// function getRandomInt(min, max) {
+//     return Math.floor(Math.random() * (max - min + 1)) + min;
+// }
+// function getRandom(min, max) {
+//     return Math.random() * (max - min) + min;
+// }
+// for(var i = 0; i < 30; i ++){
+// 	var incident = new Incident();
+// 	incident.user = "5b930ba168081e9b04c952ff"
+// 	var random = getRandomInt(1,3)
+// 	switch (random){
+// 		case 1:
+// 			incident.description.food = true
+// 			break;
+// 		case 2:
+// 			incident.description.injury = true
+// 			break;
+// 		case 3:
+// 			incident.description.other = true
+// 			break;
+// 	}
+
+// 	incident.coordinates = {
+// 		lat: getRandom(39.952018680567924-0.5,39.952018680567924+0.5),
+// 		long: getRandom(-75.19030806990608-0.5, -75.19030806990608+0.5),
+// 	}
+// 	incident.currentPriority = getRandomInt(1,3)
+// 	incident.resolved = false
+
+
+// 	incident.save();
+
+// 	console.log(incident)
+// }
 
 module.exports = app;
