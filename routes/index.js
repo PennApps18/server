@@ -55,6 +55,7 @@ router.post('/storedUsers', function(req, res, next){
 		dbUser.coordinates = req.body.coordinates;
 
 		dbUser.save();
+	res.status(200);
 })
 
 module.exports = router;
