@@ -50,12 +50,10 @@ module.exports = function(io){
 	});
 
 router.post('/storedUsers', function(req, res, next){
-	console.log('in');
 	var dbUser = new Incident();
 		dbUser.user = req.body.user;
-		dbUser.description = req.body.description;
-		dbUser.coordinates = req.body.coordinates;
-		console.log('in');
+		dbUser.description = JSON.parse(req.body.description);
+		dbUser.coordinates = JSON.parse(req.body.coordinates);
 
 		dbUser.save();
 
