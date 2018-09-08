@@ -6,8 +6,12 @@ var app = express();
 var Schema = mongoose.Schema;
 
 var incidentSchema = new Schema({
-	user: { type: ObjectId, required: true },
-	description : { type: String, required: true}
+	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
+	description : { 
+		food: { type: Boolean, required: true},
+		injury: { type: Boolean, required: true},
+		other: { type: Boolean, required: true},
+	},
 	coordinates: {
 		long : { type: Number, required: false },
 		lat : { type : Number, required: false }
