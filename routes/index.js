@@ -45,7 +45,7 @@ module.exports = function(io){
 		Incident.find({}, function(err, incidents){
 			incidents.forEach((incident) => {
 				if(!incident.resolved){
-					if (incident.coordinates.lat - req.body.coordinates.lat <= 0.5 && incident.coordinates.long - req.body.coordinates.long <= 0.5){
+					if (Math.abs(incident.coordinates.lat - req.body.coordinates.lat) <= 0.5 && Math.abs(incident.coordinates.long - req.body.coordinates.long) <= 0.5){
 						returnStatement.push(incident);
 					}
 				}
