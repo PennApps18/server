@@ -10,7 +10,7 @@ var userInfoSchema = new Schema({
 		long : { type: Number, required: false },
 		lat : { type : Number, required: false }
 	},
-	currentPriority : { type: Number, required: false }
+	subscribers : { type : ObjectId, required: false }
 });
 
 module.exports = mongoose.model("User", userInfoSchema);
