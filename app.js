@@ -19,9 +19,6 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', (callback) => {
 	console.log('connection succ');
-	var newUser = new User();
-	newUser.username = "adersh";
-	newUser.save();
 });
 
 // view engine setup
