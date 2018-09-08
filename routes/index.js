@@ -55,11 +55,17 @@ router.post('/storedUsers', function(req, res, next){
 		dbUser.user = req.body.user;
 		dbUser.description = req.body.description;
 		dbUser.coordinates = req.body.coordinates;
+		dbUser.image = req.body.image;
 		console.log('in');
 
 		dbUser.save();
+		
+	io.emit("incidentUpdate", dbUser);
 
-	res.status(200).end("ende")
+	res.status(200).end("end");
+
+
+
 });
 
 return router;

@@ -16,7 +16,8 @@ var incidentSchema = new Schema({
 		long : { type: Number, required: false },
 		lat : { type : Number, required: false }
 	},
-	currentPriority : { type: Number, required: false }
+	currentPriority : { type: Number, required: false },
+	image : { type: Buffer, required: false }
 });
 
 module.exports = mongoose.model("Incident", incidentSchema);
