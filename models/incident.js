@@ -7,7 +7,11 @@ var Schema = mongoose.Schema;
 
 var incidentSchema = new Schema({
 	user: { type: ObjectId, required: true },
-	description : { type: String, required: true}
+	description : { 
+		food: { type: Boolean, required: true},
+		injury: { type: Boolean, required: true},
+		other: { type: Boolean, required: true},
+	},
 	coordinates: {
 		long : { type: Number, required: false },
 		lat : { type : Number, required: false }

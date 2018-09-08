@@ -12,6 +12,7 @@ var io = require('socket.io')(server);
 var bodyParser = require('body-parser');
 
 require('./config/socket')(io);
+require('./config/pushNotifications');
 
 mongoose.connect(process.env.MLAB_URI || "mongodb://savan:123robot@ds149742.mlab.com:49742/pennapps18", function (err) {
 	if(err) console.log(err);
