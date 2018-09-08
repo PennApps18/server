@@ -50,18 +50,16 @@ module.exports = function(io){
 	});
 
 router.post('/storedUsers', function(req, res, next){
+	console.log('in');
 	var dbUser = new Incident();
 		dbUser.user = req.body.user;
 		dbUser.description = req.body.description;
 		dbUser.coordinates = req.body.coordinates;
+		console.log('in');
 
 		dbUser.save();
-		
-	User.findById(req.body.user, function (err, user){
-			var s = user.subscribers;
-			
-	})
-	res.status(200);
+
+	res.status(200).end("ende")
 });
 
 return router;
