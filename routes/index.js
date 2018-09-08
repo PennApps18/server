@@ -52,16 +52,15 @@ module.exports = function(io){
 	 					returnStatement.push(incident);
 	 				}
 	 			}
+		
+	 			if (incident.food === true){
+	 				numFood += 1;
+	 			} else if (incident.injury === true){
+	 				numInjury += 1;
+	 			} else if (incident.other === true){
+	 				numOther += 1;
+	 			}
 		 		
-		 		for(var property in incident){
-		 			if (incident.food === true){
-		 				numFood += 1;
-		 			} else if (incident.injury === true){
-		 				numInjury += 1;
-		 			} else if (incident.other === true){
-		 				numOther += 1;
-		 			}
-		 		}
 	 		});
 	 		res.send(JSON.stringify({incidents: returnStatement, report: {food: numFood, injury: numInjury, other: numOther}}));
 	 	});
