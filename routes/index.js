@@ -57,7 +57,7 @@ module.exports = function(io){
 	 				numFood += 1;
 	 			} else if (incident.description.injury){
 	 				numInjury += 1;
-	 			} else if (indcident.description.other){
+	 			} else if (incident.description.other){
 	 				numOther += 1;
 	 			}
 		 		
