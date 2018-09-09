@@ -116,7 +116,8 @@ server.listen(process.env.PORT || 7900);
 // 	// 	lat: getRandom(44-0.5,44+0.5),
 // 	// 	long: getRandom(-78-0.5, -78+0.5),
 // 	}
-// 	incident.currentPriority = getRandomInt(1,3)
+// 	//incident.currentPriority = getRandomInt(1,3)
+// 	incident.currentPriority = 1;
 	
 // 	var reso = getRandomInt(1,2)
 // 	switch (reso){
