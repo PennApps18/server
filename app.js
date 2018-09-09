@@ -59,7 +59,7 @@ server.listen(process.env.PORT || 7900);
 var incidentSchema = new Schema({
 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
 	description : { 
-		food: Boolean,
+		collateral: Boolean,
 		injury: Boolean,
 		other: Boolean
 	},
@@ -85,7 +85,7 @@ var incidentSchema = new Schema({
 // 	var random = getRandomInt(1,3)
 // 	switch (random){
 // 		case 1:
-// 			incident.description.food = true
+// 			incident.description.collateral = true
 // 			break;
 // 		case 2:
 // 			incident.description.injury = true

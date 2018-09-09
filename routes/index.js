@@ -44,7 +44,7 @@ module.exports = function(io){
 
 	router.post('/range', function(req, res, next){
 	 	var returnStatement  = [];
-	 	var numFood = 0;
+	 	var numcollateral = 0;
 	 	var numInjury = 0;
 	 	var numOther = 0;
 	 	var resolvedHigh = 0;
@@ -67,8 +67,8 @@ module.exports = function(io){
 		 					resolvedLow += 1;
 		 				}
 			 		}	
-		 			if (incident.description.food){
-		 				numFood += 1;
+		 			if (incident.description.collateral){
+		 				numcollateral += 1;
 		 			} else if (incident.description.injury){
 		 				numInjury += 1;
 		 			} else if (incident.description.other){
@@ -114,7 +114,7 @@ module.exports = function(io){
 	 			console.log(riskFactor);
 
 	 		
-	 			res.send(JSON.stringify({incidents: returnStatement, report: {food: numFood, injury: numInjury, other: numOther}, SeverityFactor: riskFactor}));
+	 			res.send(JSON.stringify({incidents: returnStatement, report: {collateral: numcollateral, injury: numInjury, other: numOther}, SeverityFactor: riskFactor}));
 	 		});
 	 	});
 

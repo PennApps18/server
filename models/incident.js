@@ -8,7 +8,7 @@ var Schema = mongoose.Schema;
 var incidentSchema = new Schema({
 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
 	description : { 
-		food: Boolean,
+		collateral: Boolean,
 		injury: Boolean,
 		other: Boolean
 	},
