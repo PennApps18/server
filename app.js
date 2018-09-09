@@ -116,8 +116,8 @@ for(var i = 0; i < 30; i ++){
 	// 	lat: getRandom(44-0.5,44+0.5),
 	// 	long: getRandom(-78-0.5, -78+0.5),
 	}
-	//incident.currentPriority = getRandomInt(1,3)
-	incident.currentPriority = 1;
+	incident.currentPriority = getRandomInt(1,3)
+	
 	var reso = getRandomInt(1,2)
 	switch (reso){
 		case 1:
