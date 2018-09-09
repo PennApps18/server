@@ -75,7 +75,9 @@ module.exports = function(io){
 	 	dbUser.coordinates = req.body.coordinates;
 	 	dbUser.currentPriority = req.body.currentPriority;
 	 	dbUser.resolved = false;
-	 	dbUser.image = req.body.image;
+	 	var b64string = req.body.image;
+		var buf = Buffer.from(b64string, 'base64'); // Ta-da
+	 	dbUser.image = buf;
 
 	 	dbUser.save();
 
