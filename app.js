@@ -53,7 +53,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-server.listen(process.env.PORT || 7900);
+server.listen(process.env.PORT || 8000);
 
 var Schema = mongoose.Schema;
 // var incidentSchema = new Schema({
@@ -82,7 +82,7 @@ var Schema = mongoose.Schema;
 // function getRandom(min, max) {
 //     return Math.random() * (max - min) + min;
 // }
-// for(var i = 0; i < 150; i ++){
+// for(var i = 0; i < 120; i ++){
 // 	var incident = new Incident();
 // 	incident.user = getRandomInt(1,9)+"b"+getRandomInt(1,9)+getRandomInt(1,9)+getRandomInt(1,9)+"ba168081e9b04c952ff";
 // 	var random = getRandomInt(1,6)
@@ -109,8 +109,8 @@ var Schema = mongoose.Schema;
 // 	incident.time = Date.now();
 
 // 	incident.coordinates = {
-// 		lat: getRandom(39.952018680567924-0.5,39.952018680567924+0.5),
-// 		long: getRandom(-75.19030806990608-0.5, -75.19030806990608+0.5),
+// 		lat: getRandom(39.952018680567924-0.2,39.952018680567924+0.2),
+// 		long: getRandom(-75.19030806990608-0.2, -75.19030806990608+0.2),
 // 	// }
 // 	// incident.coordinates = {
 // 	// 	lat: getRandom(44-0.5,44+0.5),
@@ -118,16 +118,16 @@ var Schema = mongoose.Schema;
 // 	}
 // 	incident.currentPriority = getRandomInt(1,3)
 // 	//incident.currentPriority = 1;
-// 	incident.resolved = false;
-// 	// var reso = getRandomInt(1,2)
-// 	// switch (reso){
-// 	// 	case 1:
-// 	// 		incident.resolved = true
-// 	// 		break;
-// 	// 	case 2:
-// 	// 		incident.resolved = false
-// 	// 		break;
-// 	// }
+// 	//incident.resolved = false;
+// 	var reso = getRandomInt(1,2)
+// 	switch (reso){
+// 		case 1:
+// 			incident.resolved = true
+// 			break;
+// 		case 2:
+// 			incident.resolved = false
+// 			break;
+// 	}
 
 // 	incident.save();
 
