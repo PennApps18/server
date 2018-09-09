@@ -109,8 +109,8 @@ server.listen(process.env.PORT || 7900);
 // 	incident.time = Date.now();
 
 // 	incident.coordinates = {
-// 		lat: getRandom(39.952018680567924-0.5,39.952018680567924+0.5),
-// 		long: getRandom(-75.19030806990608-0.5, -75.19030806990608+0.5),
+// 		lat: getRandom(39.952018680567924-0.1,39.952018680567924+0.1),
+// 		long: getRandom(-75.19030806990608-0.1, -75.19030806990608+0.1),
 // 	// }
 // 	// incident.coordinates = {
 // 	// 	lat: getRandom(44-0.5,44+0.5),
