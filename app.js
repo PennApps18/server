@@ -56,25 +56,25 @@ app.use(function(err, req, res, next) {
 server.listen(process.env.PORT || 7900);
 
 var Schema = mongoose.Schema;
-var incidentSchema = new Schema({
-	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
-	description : { 
-		food: Boolean,
-		injury: Boolean,
-		other: Boolean,
-		fire: Boolean,
-		flooding: Boolean,
-		earthquake: Boolean
-	},
-	coordinates: {
-		long : Number,
-		lat : Number
-	},
-	time : Date,
-	resolved: Boolean,
-	currentPriority : { type: Number, required: false },
-	image : { type: Buffer, required: false }
-});
+// var incidentSchema = new Schema({
+// 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
+// 	description : { 
+// 		food: Boolean,
+// 		injury: Boolean,
+// 		other: Boolean,
+// 		fire: Boolean,
+// 		flooding: Boolean,
+// 		earthquake: Boolean
+// 	},
+// 	coordinates: {
+// 		long : Number,
+// 		lat : Number
+// 	},
+// 	time : Date,
+// 	resolved: Boolean,
+// 	currentPriority : { type: Number, required: false },
+// 	image : { type: Buffer, required: false }
+// });
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -84,7 +84,7 @@ function getRandom(min, max) {
 }
 for(var i = 0; i < 150; i ++){
 	var incident = new Incident();
-	incident.user = "5b930ba168081e9b04c952ff"
+	incident.user = getRandomInt(1,9)+"b"+getRandomInt(1,9)+getRandomInt(1,9)+getRandomInt(1,9)+"ba168081e9b04c952ff";
 	var random = getRandomInt(1,6)
 	switch (random){
 		case 1:
@@ -118,24 +118,24 @@ for(var i = 0; i < 150; i ++){
 	}
 	incident.currentPriority = getRandomInt(1,3)
 	//incident.currentPriority = 1;
-	
-	var reso = getRandomInt(1,2)
-	switch (reso){
-		case 1:
-			incident.resolved = true
-			break;
-		case 2:
-			incident.resolved = false
-			break;
-	}
+	incident.resolved = false;
+	// var reso = getRandomInt(1,2)
+	// switch (reso){
+	// 	case 1:
+	// 		incident.resolved = true
+	// 		break;
+	// 	case 2:
+	// 		incident.resolved = false
+	// 		break;
+	// }
 
 	incident.save();
 
 	console.log(incident)
  }
 
-var s = new Storage();
-s.userStorage = -1;
-s.save();
+// var s = new Storage();
+// s.userStorage = -1;
+// s.save();
 
 module.exports = app;

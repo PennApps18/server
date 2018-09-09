@@ -64,7 +64,7 @@ module.exports = function(io){
 		 				if (Math.abs(incident.coordinates.lat - req.body.coordinates.lat) <= 0.5 && Math.abs(incident.coordinates.long - req.body.coordinates.long) <= 0.5){
 		 					returnStatement.push(incident);
 		 				}
-		 			}else if(incident.resolved = true &&  Math.abs(incident.coordinates.lat - req.body.coordinates.lat) <= 0.5 && Math.abs(incident.coordinates.long - req.body.coordinates.long) <= 0.5){
+		 			}else if(incident.resolved &&  Math.abs(incident.coordinates.lat - req.body.coordinates.lat) <= 0.5 && Math.abs(incident.coordinates.long - req.body.coordinates.long) <= 0.5){
 		 				if(incident.currentPriority === 3){
 		 					resolvedHigh += 1;
 		 				}else if(incident.currentPriority === 2){
