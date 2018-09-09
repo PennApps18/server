@@ -44,9 +44,12 @@ module.exports = function(io){
 
 	router.post('/range', function(req, res, next){
 	 	var returnStatement  = [];
-	 	var numcollateral = 0;
+	 	var numFood = 0;
 	 	var numInjury = 0;
 	 	var numOther = 0;
+	 	var numEarthquake = 0;
+	 	var numFlooding = 0;
+	 	var numFire = 0;
 	 	var resolvedHigh = 0;
 	 	var resolvedMed = 0;
 	 	var resolvedLow = 0;
@@ -67,12 +70,18 @@ module.exports = function(io){
 		 					resolvedLow += 1;
 		 				}
 			 		}	
-		 			if (incident.description.collateral){
-		 				numcollateral += 1;
+		 			if (incident.description.food){
+		 				numFood += 1;
 		 			} else if (incident.description.injury){
 		 				numInjury += 1;
 		 			} else if (incident.description.other){
 		 				numOther += 1;
+		 			} else if (incident.description.earthquake){
+		 				numEarthquake += 1;
+		 			} else if (incident.description.fire){
+		 				numFire += 1;
+		 			} else if (incident.description.flooding){
+		 				numFlooding += 1;
 		 			}
 		 		});	
 
@@ -114,7 +123,7 @@ module.exports = function(io){
 	 			console.log(riskFactor);
 
 	 		
-	 			res.send(JSON.stringify({incidents: returnStatement, report: {collateral: numcollateral, injury: numInjury, other: numOther}, SeverityFactor: riskFactor}));
+	 			res.send(JSON.stringify({incidents: returnStatement, report: {food: numFood, injury: numInjury, other: numOther, earthquake: numEarthquake, fire: numFire, flooding: numFlooding,}, SeverityFactor: riskFactor}));
 	 		});
 	 	});
 
@@ -141,25 +150,6 @@ module.exports = function(io){
 	 		incident.resolved = true;
 	 		incident.save();																
 	 		res.status(200).end("Resolve Succ");
-	 	});
-	 });
-
-	 router.post('/metrics', function(res, req, next){
-	 	var resolvedHigh = 0;
-	 	var resolvedMed = 0;
-	 	var resolvedLow = 0;
-	 	Incident.find({}, function(err, incidents){
-	 		incidents.forEach((incident) => {
-	 			if(incident.resolved && incident.currentPriority === 3){
-	 				resolvedHigh += 1;
-	 			}
-	 			if(incident.resolved && incident.currentPriority === 2){
-	 				resolvedMed += 1;
-	 			}
-	 			if(incident.resolved && incident.currentPriority === 1){
-	 				resolvedLow += 1;
-	 			}
-	 		});
 	 	});
 	 });
 
