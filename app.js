@@ -82,7 +82,7 @@ function getRandomInt(min, max) {
 function getRandom(min, max) {
     return Math.random() * (max - min) + min;
 }
-for(var i = 0; i < 30; i ++){
+for(var i = 0; i < 150; i ++){
 	var incident = new Incident();
 	incident.user = "5b930ba168081e9b04c952ff"
 	var random = getRandomInt(1,6)
