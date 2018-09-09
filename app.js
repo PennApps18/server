@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var User = require('./models/user')
 var Incident = require('./models/incident')
+var Storage = require('./models/storage')
 var mongoose = require('mongoose');
 var app = express();
 var server = require('http').createServer(app);
@@ -52,26 +53,29 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-server.listen(process.env.PORT || 5000);
+server.listen(process.env.PORT || 7900);
 
-/*
-var incidentSchema = new Schema({
-	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
-	description : { 
-		food: Boolean,
-		injury: Boolean,
-		other: Boolean
-	},
-	coordinates: {
-		long : Number,
-		lat : Number
-	},
-	time : Date,
-	resolved: Boolean,
-	currentPriority : { type: Number, required: false },
-	image : { type: Buffer, required: false }
-});
-*/
+// var Schema = mongoose.Schema;
+// var incidentSchema = new Schema({
+// 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
+// 	description : { 
+// 		food: Boolean,
+// 		injury: Boolean,
+// 		other: Boolean,
+// 		fire: Boolean,
+// 		flooding: Boolean,
+// 		earthquake: Boolean
+// 	},
+// 	coordinates: {
+// 		long : Number,
+// 		lat : Number
+// 	},
+// 	time : Date,
+// 	resolved: Boolean,
+// 	currentPriority : { type: Number, required: false },
+// 	image : { type: Buffer, required: false }
+// });
+
 // function getRandomInt(min, max) {
 //     return Math.floor(Math.random() * (max - min + 1)) + min;
 // }
@@ -81,7 +85,7 @@ var incidentSchema = new Schema({
 // for(var i = 0; i < 30; i ++){
 // 	var incident = new Incident();
 // 	incident.user = "5b930ba168081e9b04c952ff"
-// 	var random = getRandomInt(1,3)
+// 	var random = getRandomInt(1,6)
 // 	switch (random){
 // 		case 1:
 // 			incident.description.food = true
@@ -92,19 +96,44 @@ var incidentSchema = new Schema({
 // 		case 3:
 // 			incident.description.other = true
 // 			break;
+// 		case 4:
+// 			incident.description.earthquake = true
+// 			break;
+// 		case 5:
+// 			incident.description.fire = true
+// 			break;
+// 		case 6:
+// 			incident.description.flooding = true
+// 			break;
 // 	}
+// 	incident.time = Date.now();
 
 // 	incident.coordinates = {
 // 		lat: getRandom(39.952018680567924-0.5,39.952018680567924+0.5),
 // 		long: getRandom(-75.19030806990608-0.5, -75.19030806990608+0.5),
 // 	}
+// 	incident.coordinates = {
+// 		lat: getRandom(44-0.5,44+0.5),
+// 		long: getRandom(-78-0.5, -78+0.5),
+// 	}
 // 	incident.currentPriority = getRandomInt(1,3)
-// 	incident.resolved = false
-
+// 	var reso = getRandomInt(1,2)
+// 	switch (reso){
+// 		case 1:
+// 			incident.resolved = true
+// 			break;
+// 		case 2:
+// 			incident.resolved = false
+// 			break;
+// 	}
 
 // 	incident.save();
 
 // 	console.log(incident)
-// }
+//  }
+
+// var s = new Storage();
+// s.userStorage = -1;
+// s.save();
 
 module.exports = app;

@@ -10,7 +10,10 @@ var incidentSchema = new Schema({
 	description : { 
 		food: Boolean,
 		injury: Boolean,
-		other: Boolean
+		fire: Boolean,
+		earthquake: Boolean,
+		flooding: Boolean,
+		other: Boolean,
 	},
 	coordinates: {
 		long : Number,
