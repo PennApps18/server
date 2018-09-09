@@ -145,7 +145,7 @@ module.exports = function(io){
 	 			console.log(riskFactor);
 
 	 		
-	 			res.send(JSON.stringify({incidents: returnStatement, report: {type: mostCommon, amount: maxIncidents,}, severityFactor: riskFactor}));
+	 			res.send(JSON.stringify({incidents: returnStatement, highest: {most: mostCommon, amount: maxIncidents,}, report: {fire: numFire, flooding: numFlooding, earthquake: numEarthquake, other: numOther, food: numFood, injury: numInjury,}, severityFactor: riskFactor}));
 	 		});
 	 	});
 
