@@ -55,26 +55,26 @@ app.use(function(err, req, res, next) {
 
 server.listen(process.env.PORT || 7900);
 
-// var Schema = mongoose.Schema;
-// var incidentSchema = new Schema({
-// 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
-// 	description : { 
-// 		food: Boolean,
-// 		injury: Boolean,
-// 		other: Boolean,
-// 		fire: Boolean,
-// 		flooding: Boolean,
-// 		earthquake: Boolean
-// 	},
-// 	coordinates: {
-// 		long : Number,
-// 		lat : Number
-// 	},
-// 	time : Date,
-// 	resolved: Boolean,
-// 	currentPriority : { type: Number, required: false },
-// 	image : { type: Buffer, required: false }
-// });
+var Schema = mongoose.Schema;
+var incidentSchema = new Schema({
+	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
+	description : { 
+		food: Boolean,
+		injury: Boolean,
+		other: Boolean,
+		fire: Boolean,
+		flooding: Boolean,
+		earthquake: Boolean
+	},
+	coordinates: {
+		long : Number,
+		lat : Number
+	},
+	time : Date,
+	resolved: Boolean,
+	currentPriority : { type: Number, required: false },
+	image : { type: Buffer, required: false }
+});
 
 // function getRandomInt(min, max) {
 //     return Math.floor(Math.random() * (max - min + 1)) + min;
