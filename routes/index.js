@@ -44,6 +44,9 @@ module.exports = function(io){
 
 	router.post('/range', function(req, res, next){
 	 	var returnStatement  = [];
+	 	var maxIncidents = 0;
+	 	var mostCommon = '';
+	 	var allEvents = [];
 	 	var numFood = 0;
 	 	var numInjury = 0;
 	 	var numOther = 0;
@@ -85,6 +88,25 @@ module.exports = function(io){
 		 			}
 		 		});	
 
+		 		function danger (event, freq) {
+    				this.event = event;
+    				this.freq = freq;
+				}
+				var fi = new danger('Fire', numFire);
+				var fl = new danger('Flooding', numFlooding);
+				var eq = new danger('Earthquake', numEarthquake);
+				var inj = new danger('Injury', numInjury);
+				var fo = new danger('Food', numFood);
+				var ot = new danger('Other', numOther);
+
+				allEvents.push(fi,fl,eq,inj,fo,ot);
+
+				for(var i = 0; i<6; i++){
+					if(allEvents[i].freq > maxIncidents){
+						maxIncidents = allEvents[i].freq;
+						mostCommon = allEvents[i].event;
+					}
+				}
 	 			var weightedSum = resolvedHigh*.5 + resolvedMed*.37 + resolvedLow*.24; 
 	 			console.log(weightedSum, resolvedHigh, resolvedMed, resolvedLow);
  				if (weightedSum > maxSev.userStorage){
@@ -123,7 +145,7 @@ module.exports = function(io){
 	 			console.log(riskFactor);
 
 	 		
-	 			res.send(JSON.stringify({incidents: returnStatement, report: {food: numFood, injury: numInjury, other: numOther, earthquake: numEarthquake, fire: numFire, flooding: numFlooding,}, SeverityFactor: riskFactor}));
+	 			res.send(JSON.stringify({incidents: returnStatement, report: {type: mostCommon, amount: maxIncidents,}, severityFactor: riskFactor}));
 	 		});
 	 	});
 
