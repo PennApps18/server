@@ -55,85 +55,86 @@ app.use(function(err, req, res, next) {
 
 server.listen(process.env.PORT || 7900);
 
-var Schema = mongoose.Schema;
-var incidentSchema = new Schema({
-	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
-	description : { 
-		food: Boolean,
-		injury: Boolean,
-		other: Boolean,
-		fire: Boolean,
-		flooding: Boolean,
-		earthquake: Boolean
-	},
-	coordinates: {
-		long : Number,
-		lat : Number
-	},
-	time : Date,
-	resolved: Boolean,
-	currentPriority : { type: Number, required: false },
-	image : { type: Buffer, required: false }
-});
+// var Schema = mongoose.Schema;
+// var incidentSchema = new Schema({
+// 	user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required:true },
+// 	description : { 
+// 		food: Boolean,
+// 		injury: Boolean,
+// 		other: Boolean,
+// 		fire: Boolean,
+// 		flooding: Boolean,
+// 		earthquake: Boolean
+// 	},
+// 	coordinates: {
+// 		long : Number,
+// 		lat : Number
+// 	},
+// 	time : Date,
+// 	resolved: Boolean,
+// 	currentPriority : { type: Number, required: false },
+// 	image : { type: Buffer, required: false }
+// });
 
-// function getRandomInt(min, max) {
-//     return Math.floor(Math.random() * (max - min + 1)) + min;
-// }
-// function getRandom(min, max) {
-//     return Math.random() * (max - min) + min;
-// }
-// for(var i = 0; i < 30; i ++){
-// 	var incident = new Incident();
-// 	incident.user = "5b930ba168081e9b04c952ff"
-// 	var random = getRandomInt(1,6)
-// 	switch (random){
-// 		case 1:
-// 			incident.description.food = true
-// 			break;
-// 		case 2:
-// 			incident.description.injury = true
-// 			break;
-// 		case 3:
-// 			incident.description.other = true
-// 			break;
-// 		case 4:
-// 			incident.description.earthquake = true
-// 			break;
-// 		case 5:
-// 			incident.description.fire = true
-// 			break;
-// 		case 6:
-// 			incident.description.flooding = true
-// 			break;
-// 	}
-// 	incident.time = Date.now();
+function getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+function getRandom(min, max) {
+    return Math.random() * (max - min) + min;
+}
+for(var i = 0; i < 30; i ++){
+	var incident = new Incident();
+	incident.user = "5b930ba168081e9b04c952ff"
+	var random = getRandomInt(1,6)
+	switch (random){
+		case 1:
+			incident.description.food = true
+			break;
+		case 2:
+			incident.description.injury = true
+			break;
+		case 3:
+			incident.description.other = true
+			break;
+		case 4:
+			incident.description.earthquake = true
+			break;
+		case 5:
+			incident.description.fire = true
+			break;
+		case 6:
+			incident.description.flooding = true
+			break;
+	}
+	incident.time = Date.now();
 
-// 	incident.coordinates = {
-// 		lat: getRandom(39.952018680567924-0.5,39.952018680567924+0.5),
-// 		long: getRandom(-75.19030806990608-0.5, -75.19030806990608+0.5),
-// 	}
-// 	incident.coordinates = {
-// 		lat: getRandom(44-0.5,44+0.5),
-// 		long: getRandom(-78-0.5, -78+0.5),
-// 	}
-// 	incident.currentPriority = getRandomInt(1,3)
-// 	var reso = getRandomInt(1,2)
-// 	switch (reso){
-// 		case 1:
-// 			incident.resolved = true
-// 			break;
-// 		case 2:
-// 			incident.resolved = false
-// 			break;
-// 	}
+	incident.coordinates = {
+		lat: getRandom(39.952018680567924-0.5,39.952018680567924+0.5),
+		long: getRandom(-75.19030806990608-0.5, -75.19030806990608+0.5),
+	// }
+	// incident.coordinates = {
+	// 	lat: getRandom(44-0.5,44+0.5),
+	// 	long: getRandom(-78-0.5, -78+0.5),
+	}
+	//incident.currentPriority = getRandomInt(1,3)
+	incident.currentPriority = 1;
+	var reso = getRandomInt(1,2)
+	switch (reso){
+		case 1:
+			incident.resolved = true
+			break;
+		case 2:
+			incident.resolved = false
+			break;
+	}
 
-// 	incident.save();
+	incident.save();
 
-// 	console.log(incident)
-//  }
+	console.log(incident)
+ }
 
-// var s = new Storage();
-// s.userStorage = -1;
-// s.save();
+var s = new Storage();
+s.userStorage = -1;
+s.save();
 
 module.exports = app;
