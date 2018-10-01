@@ -5,12 +5,13 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 var Storage = require('../models/storage')
 var mongoose = require('mongoose');
+var path = require('path');
 
 module.exports = function(io){
 
 	/* GET home page. */
 	router.get('/', function(req, res, next) {
-		res.render('index', { title: 'Express' });
+		res.sendFile(path.join(__dirname, '../views', 'index.html'));
 	});
 	/*
 	 * @params username of user
